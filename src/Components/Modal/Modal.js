@@ -1,154 +1,8 @@
 import React from 'react'
-import "./App.css"
-function All() {
+import "./../../App.css";
+function Modal() {
   return (
-    <div>
-        <div>
-        <input type="checkbox" name="hiddenToggleCheckBox" id="hiddenToggleCheckBox" />
-        <div className="sidebar">
-          <div className="brand">
-            <span className="lab la-affiliatetheme" />
-            <h2>Fitin'fit</h2>
-            <div>
-              <label className="closebtn" htmlFor="hiddenToggleCheckBox">
-                <span className="las la-times" />
-              </label>
-            </div>
-          </div>
-          <div className="sidemenu">
-            <div className="side-user">
-              <div className="side-img" />
-              <div className="user">
-                <small>Trainer</small>
-                <p>Let's Start Training</p>
-              </div>
-            </div>
-            <ul>
-              <li>
-                <a href="./index.html" className="active">
-                  <span className="las la-home" />
-                  <span>Dashboard</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <span className="las la-tasks" />
-                  <span>Tasks</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <span className="las la-history" />
-                  <span>History</span>
-                </a>
-              </li>
-              <li>
-                <a href>
-                  <span className="las la-cog" />
-                  <span>Settings</span>
-                </a>
-              </li>
-              <li>
-                <a href="./login.html">
-                  <span className="las la-user-plus" />
-                  <span>login/sign up</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-        {/* Main starts */}
-        <div className="main-content">
-          {/* Header starts here */}
-          <header>
-            <label htmlFor="hiddenToggleCheckBox" className="menu-toggle">
-              <span className="las la-bars" />
-            </label>
-            <div className="search">
-              <span className="las la-search" />
-              <input type="search" name="search" id="search" placeholder="Enter Keyword" />
-            </div>
-            <div className="head-icons">
-              <span className="las la-bell" />
-              <span className="las la-bookmark" />
-              <span className="las la-comment" />
-            </div>
-          </header>
-          {/* Header ends here */}
-          <main>
-            {/* Add Task here */}
-            <div className="addtask">
-              <div className="row w-100 justify-content-center" style={{marginBottom: '10px'}}>
-                <h3 className="text-white"><q>What seems impossible today will one day become your warm-up</q></h3> 
-              </div>
-              <a className="text-decoration-none" href="./new-task.html"><button className="addnewtaskbtn btn">Add New Task</button></a>
-            </div>
-            {/* Display the card */}
-            <div className="cards">
-              <div className="card">
-                <div className="checkbox-completed-task">
-                  <input type="checkbox" name="completeTask" id="completeTask" />
-                  <span />
-                </div>
-                <label htmlFor="completeTask" className="compleLabel">Mark as Completed</label>
-                <div className="card-icon">
-                  <span className="las la-running" />
-                </div>
-                <div className="edit-button" data-toggle="modal" data-target="#Insert-Modal">
-                  <span className="las la-edit" />  
-                </div>
-                <div className="card-info">
-                  <h2>Running</h2>
-                  <small>Tasks</small>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-icon">
-                  <span className="las la-walking" />
-                </div>
-                <div className="edit-button" data-toggle="modal" data-target="#Insert-Modal">
-                  <span className="las la-edit" />  
-                </div>
-                <div className="card-info">
-                  <h2>Walking</h2>
-                  <small>Tasks</small>
-                </div>
-              </div>
-              <div className="card">
-                <div className="card-icon">
-                  <span className="las la-biking" />
-                </div>
-                <div className="edit-button" data-toggle="modal" data-target="#Insert-Modal">
-                  <span className="las la-edit" />  
-                </div>
-                <div className="card-info">
-                  <h2>Cycling</h2>
-                  <small>Tasks</small>
-                </div>
-              </div>
-            </div>
-            {/* Display the chart */}
-            <div className="chart-grid">
-              <div className="main-chart">
-                <div className="chart-head">
-                  <h3>Weekly progress</h3>
-                  <span className="las la-cog" />
-                </div>
-                <div id="myfirstchart" style={{height: '350px'}} />
-              </div>
-              <div className="progress-donut">
-                <div className="chart-head">
-                  <h3>Completed Tasks</h3>
-                </div>
-                <div id="donut-example" className="progress-donut" style={{height: '350px'}} />
-                {/* <div class="t" style="height: 350px;"></div> */}
-              </div>
-            </div>
-          </main>
-        </div>
-        {/* Modal To Display On Page */}
-        {/* Modal Start */}
-        <div className="modal fade" id="Insert-Modal" tabIndex={-1} role="dialog" aia-label="InsertModalLabel" aria-hidden="true">
+    <div className="modal fade" id="Insert-Modal" tabIndex={-1} role="dialog" aia-label="InsertModalLabel" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered">
             <div className="modal-content">
               <div className="modal-header">
@@ -238,9 +92,7 @@ function All() {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   )
 }
 
-export default All
+export default Modal

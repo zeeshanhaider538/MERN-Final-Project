@@ -201,7 +201,7 @@ input, button {
 
 .main-content {
     margin-left: 250px;
-    min-height: 100vh;
+    min-height: 10vh;
     background: var(--bg-body);
     padding: 0.5rem 1rem;
     transition: margin-left 300ms;

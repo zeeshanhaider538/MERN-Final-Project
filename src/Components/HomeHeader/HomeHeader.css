@@ -1,0 +1,14 @@
+.head{
+    height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.6)),url("../../../public/Images/R1.jpg");
+    background-size: cover;
+    background-position: center;   
+}
+.sec
+{
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}

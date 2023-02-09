@@ -1,12 +1,18 @@
-import React from 'react'
-import Header from '../Header/Header'
-
+import React from "react";
+import AddTask from "../../AddTask/AddTask";
+import Header from "../../Header/Header";
+import Main from "../../MainContent/Main";
+import SideNav from "../../SideNav/SideNav";
+import ".././../../App.css";
 function Home() {
   return (
     <div>
-      <Header/>
+      {/* <Header/> */}
+      <SideNav />
+      {/* <AddTask/> */}
+      <Main/>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
