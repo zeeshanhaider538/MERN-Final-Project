@@ -1,9 +1,9 @@
 import React from 'react'
-
+import "./../../App.css";
 function Header() {
   return (
     <div className="main-content">
-      <header>
+      <header className='hd'>
         <label htmlFor="hiddenToggleCheckBox" className="menu-toggle">
           <span className="las la-bars" />
         </label>

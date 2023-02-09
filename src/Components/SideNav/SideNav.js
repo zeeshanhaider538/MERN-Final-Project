@@ -3,11 +3,11 @@ import "./../../App.css";
 function SideNav() {
   return (
     <div>
-      <input
+      {/* <input
         type="checkbox"
         name="hiddenToggleCheckBox"
         id="hiddenToggleCheckBox"
-      />
+      /> */}
       <div className="sidebar">
         <div className="brand">
           <span className="lab la-affiliatetheme" />

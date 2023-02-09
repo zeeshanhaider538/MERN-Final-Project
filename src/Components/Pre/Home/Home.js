@@ -8,9 +8,8 @@ function Home() {
   return (
     <div>
       {/* <Header/> */}
-      <SideNav />
       {/* <AddTask/> */}
-      <Main/>
+      <Main />
     </div>
   );
 }
