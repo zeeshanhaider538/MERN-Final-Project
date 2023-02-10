@@ -20,8 +20,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/addNewTask" element={<Dform/>}/>
-          {/* <Route path="/" element={<Home/>}/> */}
-          <Route path="/" element={<HomeHeader/>}/>
+          <Route path="/" element={<Home/>}/>
+          {/* <Route path="/" element={<HomeHeader/>}/> */}
           <Route path="/login" element={<LogIn/>}/>
           <Route path="/signup" element={<SignUp/>}/>
         </Routes>
