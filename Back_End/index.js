@@ -32,16 +32,19 @@ Mongoose.connection.once("open", () => console.log("Connected with DB"));
 app.post("/", (req, res) => {
   try {
     // console.log(req.body.name);
-    if(req.body.name !== "" && req.body.email !== "" && req.body.email !== "")  {
-    console.log(req.body);
-    let user = new Users(req.body);
-    user
-      .save()
-      .then((used) => res.send(used))
-      .then(() => res.status(201));
-    }
-    else{
-        throw new Error("please enter all details");
+    if (
+      req.body.name !== "" &&
+      req.body.email !== "" &&
+      req.body.email !== ""
+    ) {
+      console.log(req.body);
+      let user = new Users(req.body);
+      user
+        .save()
+        .then((used) => res.send(used))
+        .then(() => res.status(201));
+    } else {
+      throw new Error("please enter all details");
     }
     // res.status(201)
   } catch (error) {
@@ -103,12 +106,12 @@ app.get("/dis/:id", async (req, res) => {
 // put method for edit the data
 app.put("/dis/:id", async (req, res) => {
   try {
-    let user = Users.findById(req.params.id);
+    let user = await Users.findById(req.params.id);
     if (!user) {
-      throw new Error("user not found");
+      //   throw new Error("user not found");
       res.send("user not found");
     } else {
-      let updatedUser = Users.findByIdAndUpdate(req.params.id, req.body, {
+      let updatedUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
       });
@@ -116,6 +119,21 @@ app.put("/dis/:id", async (req, res) => {
         message: "user updated successfully",
         user: updatedUser,
       });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// Delete method for delete the data
+app.delete("/dis/:id", async (req, res) => {
+  try {
+    let user = await Users.findByIdAndDelete(req.params.id);
+    if (!user) {
+      throw new Error("user not found");
+      res.send("user not found");
+    } else {
+      res.json({ message: "user deleted successfully", user: user });
     }
   } catch (error) {
     console.log(error);
