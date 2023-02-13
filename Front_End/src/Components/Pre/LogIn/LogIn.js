@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Nav from '../../HomeHeader/Nav'
 import "./LogIn.css"
 function LogIn() {
+  // const [input,setInput] =useState({})
   return (
     <div>
       <Nav/>
@@ -16,13 +17,13 @@ function LogIn() {
             <input type="password" name required />
             <label>Password</label>
           </div>
-          <a href="#">
+          <button >
             <span />
             <span />
             <span />
             <span />
             Submit
-          </a>
+          </button>
         </form>
       </div>
     </div>
