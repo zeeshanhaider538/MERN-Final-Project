@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./../../App.css";
 function SideNav() {
   return (
@@ -28,22 +29,22 @@ function SideNav() {
           </div>
           <ul className="p-0">
             <li>
-              <a href="./index.html" className="active">
+              <Link to="/dashboard" className="active">
                 <span className="las la-home" />
                 <span>Dashboard</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="" >
+              <Link to="/task" >
                 <span className="las la-tasks  " />
                 <span>Tasks</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="">
+              <Link to="/history">
                 <span className="las la-history " />
                 <span>History</span>
-              </a>
+              </Link>
             </li>
             <li>
               <a href="" >

@@ -192,7 +192,9 @@ app.post("/task", (req, res) => {
       .save()
       .then((used) => res.send(used))
       .then(() => res.status(201));
-    res.status(401).json({ message: "please enter all details" });
+    res
+      .status(401)
+      .json({ message: "activity added successfully", user: user });
   } catch (error) {
     // res.status(201)
     // console.log();
@@ -222,44 +224,44 @@ app.post("/task/M", (req, res) => {
 app.get("/activities", async (req, res) => {
   try {
     // let users=await Users.find({name:{ $regex: /^yar/ }});
-    let users = await Activity.find({});
-    if(users)
-    {
-       res.json(users);}
-      else{
-        throw error
-      }
+    let users = await Activity.find();
+    if (users) {
+      res.json(users);
+    } else {
+      throw error;
+    }
   } catch (error) {
     console.log(error);
   }
 });
 
 // get a single acitvity with id
-app.get("/activities/:id", async (req, res) => {
-  try {
-    let id = req.params.id;
-    // let users=await Users.find({name:{ $regex: /^yar/ }});
-    let users = await Activity.findById(id);
-    {
-      if (!users) {
-        res.send("activity not found");
-        // throw new Error("user not found");
-      } else {
-        res.json(users);
-      }
-    }
-    // await res.json(users);
-  } catch (error) {
-    console.log(error);
-  }
-});
+// app.get("/activities/:id", async (req, res) => {
+//   try {
+//     let id = req.params.id;
+//     // let users=await Users.find({name:{ $regex: /^yar/ }});
+//     let users = await Activity.findById(id);
+//     {
+//       if (!users) {
+//         res.send("activity not found");
+//         // throw new Error("user not found");
+//       } else {
+//         res.json(users);
+//       }
+//     }
+//     // await res.json(users);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 // get all activities of a user with email
 app.get("/activities/:email", async (req, res) => {
   try {
-    let id = req.params.email;
+    let uemail = req.params.email;
+    console.log(uemail);
     // let users=await Users.find({name:{ $regex: /^yar/ }});
-    let users = await Users.find({ email: id });
+    let users = await Activity.find({ email: uemail });
     {
       if (!users) {
         res.send("please add activity first ");
@@ -272,17 +274,18 @@ app.get("/activities/:email", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+  // console.log(req.params.email);
 });
 
 // put method for edit the activity of a user
 app.put("/activities/:id", async (req, res) => {
   try {
-    let user = await Users.findById(req.params.id);
+    let user = await Activity.findById(req.params.id);
     if (!user) {
       //   throw new Error("user not found");
       res.send("Activity not found");
     } else {
-      let updatedUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
+      let updatedUser = await Activity.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
         runValidators: true,
       });
@@ -299,7 +302,7 @@ app.put("/activities/:id", async (req, res) => {
 // Delete method for delete the data
 app.delete("/activities/:id", async (req, res) => {
   try {
-    let user = await Users.findByIdAndDelete(req.params.id);
+    let user = await Activity.findByIdAndDelete(req.params.id);
     if (!user) {
       throw new Error("Acitvity  not found");
       res.send("user not found");
