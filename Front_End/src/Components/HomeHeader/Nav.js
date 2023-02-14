@@ -6,7 +6,10 @@ function Nav() {
     <div>
       <nav className="navbar">
         {/* LOGO */}
-        <div className="logo">Fitin'Fit</div>
+        <Link to="/">
+        <div className="logo">
+          Fitin'Fit
+        </div></Link>
         {/* NAVIGATION MENU */}
         <ul className="nav-links" style={{ marginBottom: "0rem" }}>
           {/* USING CHECKBOX HACK */}
@@ -17,7 +20,7 @@ function Nav() {
           {/* NAVIGATION MENUS */}
           <div className="menu">
             <li>
-              <a href="/">Home</a>
+              <Link to="/dashboard">Home</Link>
             </li>
             <li>
               <a href="/">About</a>

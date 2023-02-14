@@ -1,7 +1,6 @@
 a {
   text-decoration: none;
   /* text-shadow: 80px orange */
-  
 }
 
 li {
@@ -31,8 +30,10 @@ li {
 /* LOGO */
 
 .logo {
+  color: orange;
   font-size: 32px;
   font-family: "Lobster", cursive;
+  text-decoration: none;
 }
 
 /* NAVBAR MENU */
@@ -166,8 +167,7 @@ input[type="checkbox"] {
     background-color: #0b1218;
   } */
 }
-.bt
-{
+.bt {
   background-color: orange;
   border-radius: 30px;
 }

@@ -1,20 +1,27 @@
-import React from 'react'
-import AddTask from '../AddTask/AddTask'
-import CardSec from '../CardSec/CardSec'
-import Chart from '../Chart/Chart'
-import Header from '../Header/Header'
-import Modal from '../Modal/Modal'
-import SideNav from '../SideNav/SideNav'
-import "./../../App.css"
+import React from "react";
+import { Link } from "react-router-dom";
+import AddTask from "../AddTask/AddTask";
+import CardSec from "../CardSec/CardSec";
+import Chart from "../Chart/Chart";
+import Header from "../Header/Header";
+import Modal from "../Modal/Modal";
+import SideNav from "../SideNav/SideNav";
+import "./../../App.css";
 function Main() {
   return (
     <div>
-    <input type="checkbox" name="hiddenToggleCheckBox" id="hiddenToggleCheckBox"></input>
-    {/* <SideNav/> */}
-    <div className="sidebar">
+      <input
+        type="checkbox"
+        name="hiddenToggleCheckBox"
+        id="hiddenToggleCheckBox"
+      ></input>
+      {/* <SideNav/> */}
+      <div className="sidebar">
         <div className="brand">
           <span className="lab la-affiliatetheme" />
-          <h2>Fitin'fit</h2>
+          <Link to="/" style={{ textDecoration: "none", color: "orange" }}>
+            <h2>Fitin'fit</h2>
+          </Link>
           <div>
             <label className="closebtn" htmlFor="hiddenToggleCheckBox">
               <span className="las la-times" />
@@ -37,7 +44,7 @@ function Main() {
               </a>
             </li>
             <li>
-              <a href="" >
+              <a href="">
                 <span className="las la-tasks  " />
                 <span>Tasks</span>
               </a>
@@ -49,13 +56,13 @@ function Main() {
               </a>
             </li>
             <li>
-              <a href="" >
+              <a href="">
                 <span className="las la-cog " />
                 <span>Settings</span>
               </a>
             </li>
             <li>
-              <a href="./login.html" >
+              <a href="./login.html">
                 <span className="las la-user-plus " />
                 <span>login/sign up</span>
               </a>
@@ -63,19 +70,17 @@ function Main() {
           </ul>
         </div>
       </div>
-    <div className="main-content" >
-      <Header />
-      <main style={{margin:"0"}}>
-      <AddTask/>
-      <CardSec/>
-      <Chart/>
-      </main>
-      <Modal/>
-
+      <div className="main-content">
+        <Header />
+        <main style={{ margin: "0" }}>
+          <AddTask />
+          <CardSec />
+          <Chart />
+        </main>
+        <Modal />
+      </div>
     </div>
-    </div>
-      
-  )
+  );
 }
 
-export default Main
+export default Main;
