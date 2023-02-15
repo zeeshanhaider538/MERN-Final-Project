@@ -1,8 +1,57 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 // import "./../../App.css";
 import "./AddTask.css";
+import { Email } from "../../App";
+import axios from "axios";
 function Form() {
+  const { email, setEmail } = useContext(Email);
+  const [input, setInput] = useState({
+    name: "",
+    gender: "",
+    weight: "",
+    heigth: "",
+    task: "",
+    duration: "",
+    date: "",
+    email: email,
+  });
+  const handler = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    // console.log("name is : " , name)
+    // console.log("value is :" , value)
+    setInput({ ...input, [name]: value });
+  };
+  async function post() {
+    if (
+      input.name === "" ||
+      input.gender === "" ||
+      input.weight === "" ||
+      input.heigth === "" ||
+      input.task === "" ||
+      input.duration === "" ||
+      input.date === ""
+    ) {
+      alert("Please enter Complete Data");
+    } else {
+      try {
+        await axios.post("http://127.0.0.1:4000/task", input, {
+          headers: {
+            "Content-type": "application/json",
+          },
+        });
+        console.log("success", input);
+      } catch (error) {
+        console.error(error.message);
+      }
+      console.log("clicked submit");
+      // navigate("/dashboard");
+      setInput("");
+    }
+  }
+
+  console.log(input);
   return (
     //     <div className="form-2-box wow fadeInUp">
     //     <form action method="POST" encType="multipart/form-data">
@@ -119,13 +168,16 @@ function Form() {
                           htmlFor="userAge"
                           className="col-sm-3 col-form-lable mt-3"
                         >
-                          Age:
+                          Name:
                         </label>
                         <div className="col-sm-9 mt-3">
                           <input
                             type="text"
                             className="form-control"
                             id="userAge"
+                            onChange={handler}
+                            name="name"
+                            value={input.name}
                           />
                         </div>
                         <label
@@ -139,6 +191,9 @@ function Form() {
                             type="text"
                             className="form-control"
                             id="userGender"
+                            onChange={handler}
+                            name="gender"
+                            value={input.gender}
                           />
                         </div>
                         <label
@@ -149,9 +204,12 @@ function Form() {
                         </label>
                         <div className="col-sm-9 mt-3">
                           <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="userWeight"
+                            onChange={handler}
+                            name="weight"
+                            value={input.weigth}
                           />
                         </div>
                         <label
@@ -162,9 +220,12 @@ function Form() {
                         </label>
                         <div className="col-sm-9 mt-3">
                           <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="userHeight"
+                            onChange={handler}
+                            name="heigth"
+                            value={input.heigth}
                           />
                         </div>
                       </div>
@@ -180,8 +241,11 @@ function Form() {
                         <div className="col-sm-9">
                           <select
                             id="userTasks"
-                            name="userTasks"
+                            // name="userTasks"
                             className="w-100"
+                            name="task"
+                            value={input.task}
+                            onChange={handler}
                           >
                             <option
                               value
@@ -209,9 +273,12 @@ function Form() {
                         </label>
                         <div className="col-sm-9 mt-3">
                           <input
-                            type="text"
+                            type="number"
                             className="form-control"
                             id="userAge"
+                            onChange={handler}
+                            name="duration"
+                            value={input.duration}
                           />
                         </div>
                         <label
@@ -225,6 +292,9 @@ function Form() {
                             type="date"
                             className="form-control"
                             id="userAge"
+                            onChange={handler}
+                            name="date"
+                            value={input.date}
                           />
                         </div>
                       </div>
@@ -237,7 +307,9 @@ function Form() {
                       </div>
                       <div className="row no-gutters justify-content-end">
                         <Link to="/dashboard">
-                          <button className="btn">Submit</button>
+                          <button onClick={() => post()} className="btn">
+                            Submit
+                          </button>
                         </Link>
                       </div>
                     </div>

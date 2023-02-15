@@ -190,11 +190,11 @@ app.post("/task", (req, res) => {
     let user = new Activity(req.body);
     user
       .save()
-      .then((used) => res.send(used))
-      .then(() => res.status(201));
-    res
+      .then((data) => res
       .status(401)
-      .json({ message: "activity added successfully", user: user });
+      .json({ message: "activity added successfully", data: data }))
+      .then(() => res.status(201));
+    
   } catch (error) {
     // res.status(201)
     // console.log();
@@ -285,10 +285,14 @@ app.put("/activities/:id", async (req, res) => {
       //   throw new Error("user not found");
       res.send("Activity not found");
     } else {
-      let updatedUser = await Activity.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true,
-      });
+      let updatedUser = await Activity.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
       res.json({
         message: "user updated successfully",
         user: updatedUser,

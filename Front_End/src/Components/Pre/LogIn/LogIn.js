@@ -1,9 +1,11 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Nav from "../../HomeHeader/Nav";
 import "./LogIn.css";
+import { Email } from "../../../App";
 function LogIn() {
+  const {email,setEmail}=useContext(Email);
   // const [input,setInput] =useState({})
   const navigate = useNavigate();
   const [input, setInput] = useState({ email: "", password: "" });
@@ -27,6 +29,7 @@ function LogIn() {
       if (a.length > 0) {
         if (user.data[0].password === password) {
           navigate("/dashboard");
+          setEmail(email);
         } else {
           alert("please enter correct password");
         }

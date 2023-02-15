@@ -62,10 +62,10 @@ function Main() {
               </a>
             </li>
             <li>
-              <a href="./login.html">
+              <Link to="/">
                 <span className="las la-user-plus " />
                 <span>login/sign up</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -1,28 +1,65 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../../App.css";
 import SideNav from "../SideNav/SideNav";
 import { Email } from "../../App";
 function History() {
-  const { activity } = useContext(Email);
+  const { activity, editactivity, setEditActivity, email } = useContext(Email);
+  const [userActivity, setUserActivity] = useState([]);
+  // const [ea, setEA] = useState({});
+  // console.log(activity);
+  async function a() {
+    await activity.map((ele) => {
+      // if (ele.email === email) {
+      //   setUserActivity([...userActivity, ele]);
+      //   // console.log(ele.task);
+      // }
+      console.log(ele.email);
+    });
+  }
+  useEffect(() => {
+    a();
+  }, []);
+
+  console.log(email);
+  const show = (id, ele) => {
+    console.log("here is the id : ", ele);
+    setEditActivity(ele);
+  };
   return (
     <div>
       <div className="col-3">
         <SideNav />
       </div>
       <div style={{ width: "80%", float: "right", marginRight: "1%" }}>
-        {activity.map((ele) => {
+        {userActivity.map((ele) => {
           return (
             <div className="card mt-3">
               <div className="card-icon">
-               {ele.task ==="running"? <span className="las la-running" />:"" }
-              //  : ele.task ==="swimming" ? <span className="las la-swimming" />:ele.task ==="cycling" ? <span className="las la-biking"/> :<span className="las la-running"/>   }
+                {ele.task === "running" ? (
+                  <span className="las la-running" />
+                ) : // <i class="fa-solid fa-person-swimming"></i>
+                ele.task === "swimming" ? (
+                  <span className="las la-swimmer" />
+                ) : ele.task === "cycling" ? (
+                  <span className="las la-biking" />
+                ) : ele.task === "walking" ? (
+                  <span className="las la-walking" />
+                ) : (
+                  <span className="las la-person-hiking" />
+                )}
               </div>
               <div
                 className="edit-button"
                 data-toggle="modal"
                 data-target="#Insert-Modal"
               >
-                <span className="las la-edit" />
+                {/* <button> */}
+                <span
+                  type="button"
+                  onClick={() => show(ele._id, ele)}
+                  className="las la-edit"
+                />
+                {/* </button> */}
               </div>
               <div className="card-info">
                 <h2>Task is : {ele.task}</h2>

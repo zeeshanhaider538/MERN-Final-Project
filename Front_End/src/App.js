@@ -19,6 +19,7 @@ function App() {
   const [data, setData] = useState([]);
   const [email, setEmail] = useState("");
   const [activity, setActivity] = useState([]);
+  const[editactivity, setEditActivity] = useState({});
   const api = async () => {
     // let a = await axios.get("http://127.0.0.1:4000/dis", {
     //   responseType: "json",
@@ -36,7 +37,7 @@ function App() {
     // setData(a);
     // let d = a.data;
     setActivity(a.data);
-    console.log(a.data);
+    // console.log(a.data);
     // console.log(activity);
   };
 
@@ -53,7 +54,16 @@ function App() {
       <Header/> */}
       {/* <All/> */}
       {/* <HomeHeader/> */}
-      <Email.Provider value={{ setEmail, email, activity, setActivity }}>
+      <Email.Provider
+        value={{
+          setEmail,
+          email,
+          activity,
+          setActivity,
+          editactivity,
+          setEditActivity,
+        }}
+      >
         <Router>
           <Routes>
             <Route path="/addNewTask" element={<Dform />} />
