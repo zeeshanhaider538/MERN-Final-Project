@@ -76,6 +76,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/task" element={<Tasks />} />
             <Route path="/history" element={<History />} />
+            {/* <Route path="/about" element={<About/>} /> */}
           </Routes>
         </Router>
       </Email.Provider>
