@@ -3,24 +3,27 @@ import "../../App.css";
 import SideNav from "../SideNav/SideNav";
 import { Email } from "../../App";
 function History() {
-  const { activity, editactivity, setEditActivity, email } = useContext(Email);
+  const { activity, editactivity, setEditActivity, eml } = useContext(Email);
   const [userActivity, setUserActivity] = useState([]);
+  // const [ab,setAb]=useState([]);
+  let ab;
   // const [ea, setEA] = useState({});
   // console.log(activity);
+  // let e = email;
+  console.log(activity);
   async function a() {
     await activity.map((ele) => {
-      // if (ele.email === email) {
-      //   setUserActivity([...userActivity, ele]);
-      //   // console.log(ele.task);
-      // }
-      console.log(ele.email);
+      if (ele.email === eml) {
+        setUserActivity([...userActivity, ele]);
+        console.log(ele);
+      }
+      // console.log(email);
     });
   }
   useEffect(() => {
     a();
   }, []);
-
-  console.log(email);
+  console.log(userActivity);
   const show = (id, ele) => {
     console.log("here is the id : ", ele);
     setEditActivity(ele);
@@ -32,7 +35,7 @@ function History() {
       </div>
       <div style={{ width: "80%", float: "right", marginRight: "1%" }}>
         {userActivity.map((ele) => {
-          return (
+          if (ele.email === eml) {
             <div className="card mt-3">
               <div className="card-icon">
                 {ele.task === "running" ? (
@@ -65,9 +68,9 @@ function History() {
                 <h2>Task is : {ele.task}</h2>
                 <small>Duration of task : {ele.duration} min</small>
               </div>
-            </div>
-            // console.log(ele.task)
-          );
+            </div>;
+          }
+          // console.log(ele.task)
         })}
       </div>
     </div>

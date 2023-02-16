@@ -17,9 +17,9 @@ import History from "./Components/History/History";
 export const Email = createContext();
 function App() {
   const [data, setData] = useState([]);
-  const [email, setEmail] = useState("");
+  const [eml, setEmail] = useState([]);
   const [activity, setActivity] = useState([]);
-  const[editactivity, setEditActivity] = useState({});
+  const [editactivity, setEditActivity] = useState({});
   const api = async () => {
     // let a = await axios.get("http://127.0.0.1:4000/dis", {
     //   responseType: "json",
@@ -57,7 +57,7 @@ function App() {
       <Email.Provider
         value={{
           setEmail,
-          email,
+          eml,
           activity,
           setActivity,
           editactivity,
