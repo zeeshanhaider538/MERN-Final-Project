@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 // import "./../../App.css";
 import "./AddTask.css";
 import { Email } from "../../App";
 import axios from "axios";
 function Form() {
-  const { email, setEmail } = useContext(Email);
+  const { email, setEmail, editactivity, editMode, setEditMode } =
+    useContext(Email);
   const [input, setInput] = useState({
     name: "",
     gender: "",
@@ -23,31 +24,62 @@ function Form() {
     // console.log("value is :" , value)
     setInput({ ...input, [name]: value });
   };
+  console.log("edit activity", editactivity);
+  useEffect(() => {
+    if (editMode) {
+      setInput(editactivity);
+    }
+  }, []);
+
   async function post() {
-    if (
-      input.name === "" ||
-      input.gender === "" ||
-      input.weight === "" ||
-      input.heigth === "" ||
-      input.task === "" ||
-      input.duration === "" ||
-      input.date === ""
-    ) {
-      alert("Please enter Complete Data");
-    } else {
-      try {
-        await axios.post("http://127.0.0.1:4000/task", input, {
-          headers: {
-            "Content-type": "application/json",
-          },
-        });
-        console.log("success", input);
-      } catch (error) {
-        console.error(error.message);
+    if (editMode) {
+      if (
+        input.name === "" ||
+        input.gender === "" ||
+        input.weight === "" ||
+        input.heigth === "" ||
+        input.task === "" ||
+        input.duration === "" ||
+        input.date === ""
+      ) {
+        alert("Please enter Complete Data");
+      } else {
+        let res = await axios
+          .put(`http://127.0.0.1:4000/activities/${editactivity._id}`, input, {
+            headers: {
+              "Content-type": "application/json",
+            },
+          })
+          .then(console.log("Updated"))
+          .then(alert("updated"))
+          .then(setEditMode(false));
       }
-      console.log("clicked submit");
-      // navigate("/dashboard");
-      setInput("");
+    } else {
+      if (
+        input.name === "" ||
+        input.gender === "" ||
+        input.weight === "" ||
+        input.heigth === "" ||
+        input.task === "" ||
+        input.duration === "" ||
+        input.date === ""
+      ) {
+        alert("Please enter Complete Data");
+      } else {
+        try {
+          await axios.post("http://127.0.0.1:4000/task", input, {
+            headers: {
+              "Content-type": "application/json",
+            },
+          });
+          console.log("success", input);
+        } catch (error) {
+          console.error(error.message);
+        }
+        console.log("clicked submit");
+        // navigate("/dashboard");
+        setInput("");
+      }
     }
   }
 

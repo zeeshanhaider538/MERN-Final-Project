@@ -20,6 +20,7 @@ function App() {
   const [eml, setEmail] = useState([]);
   const [activity, setActivity] = useState([]);
   const [editactivity, setEditActivity] = useState({});
+  const [editMode, setEditMode] = useState(false);
   const api = async () => {
     // let a = await axios.get("http://127.0.0.1:4000/dis", {
     //   responseType: "json",
@@ -45,7 +46,7 @@ function App() {
     console.log("effext");
     api();
     activities();
-  }, []);
+  }, [activities()]);
   // setData("dsfasf");
   // console.log("new", activity);
   return (
@@ -62,6 +63,8 @@ function App() {
           setActivity,
           editactivity,
           setEditActivity,
+          editMode,
+          setEditMode,
         }}
       >
         <Router>
